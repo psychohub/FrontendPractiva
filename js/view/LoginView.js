@@ -5,6 +5,7 @@ export default class LoginView {
       this.passwordInput = document.getElementById('password-input');
       this.loadingIndicator = document.getElementById('loading-indicator');
       this.errorMessage = document.getElementById('error-message');
+      this.successMessage = document.getElementById('success-message');
     }
   
     showLoading() {
@@ -32,4 +33,10 @@ export default class LoginView {
     clearForm() {
       this.form.reset();
     }
+
+    showSuccess(message) {
+        this.successMessage.textContent = message;
+        this.successMessage.style.display = 'block';
+      }
+
   }
