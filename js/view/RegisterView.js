@@ -19,9 +19,11 @@ export default class RegisterView {
     }
   
     showError(message) {
-      this.errorMessage.textContent = message;
-      this.errorMessage.style.display = 'block';
-    }
+        console.log('Mostrando mensaje de error:', message);
+        this.form.style.display = 'block';
+        this.errorMessage.textContent = message;
+        this.errorMessage.style.display = 'block';
+      }
   
     getFormData() {
       return {
@@ -31,8 +33,10 @@ export default class RegisterView {
     }
   
     clearForm() {
-      this.form.reset();
-    }
+        this.form.reset();
+        this.errorMessage.style.display = 'none';
+        this.successMessage.style.display = 'none';
+      }
     
     showSuccess(message) {
         this.successMessage.textContent = message;
