@@ -18,21 +18,36 @@ export default class LoginController {
       if (decoded && decoded.username) {
         localStorage.setItem('username', decoded.username);
       }
-      
+
       const response = await fetch('http://localhost:8000/api/protected-route', {
             headers: {
             'Authorization': `Bearer ${token}`
         }
         });
-      this.view.showSuccess('Inicio de sesión exitoso. Serás redirigido a la página principal.');
-      setTimeout(() => {
-        window.location.href = 'index.html'; 
-      }, 2000);
+
+        this.view.showSuccess('Inicio de sesión exitoso. Serás redirigido a la página principal.');
+        setTimeout(() => {
+            window.location.href = 'index.html';
+        }, 2000);
+
     } catch (error) {
-      console.error('Error en el controlador de inicio de sesión:', error);
-      this.view.showError(error.message); 
+        console.error('Error en el controlador de inicio de sesión:', error);
+   
+        let errorMessage;
+        if (error.message === 'Wrong username/password') {
+            errorMessage = 'Nombre de usuario o contraseña incorrectos.';
+        } else if (error.message === 'username and password needed.') {
+            errorMessage = 'Se requieren nombre de usuario y contraseña.';
+        } else {
+            errorMessage = 'Error al iniciar sesión. Por favor, intenta de nuevo.';
+        }
+        this.view.showError(errorMessage);
+        setTimeout(() => {
+            window.location.href = 'login.html';
+        }, 2000);
+
     } finally {
-      this.view.hideLoading(); 
+        this.view.hideLoading();
     }
   }
 
