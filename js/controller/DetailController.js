@@ -86,28 +86,28 @@ getAdIdFromUrl() {
     const typeSelect = document.getElementById('type-select');
     const imageInput = document.getElementById('image-input'); 
   
-    let imageUrl = this.currentAdImage; 
-  
+    let imageUrl = this.view.currentAdImage; 
     
+   
     if (imageInput && imageInput.files.length > 0) {
-      const newImageUrl = await this.model.uploadImage(imageInput.files[0]);
-      imageUrl = newImageUrl; 
+        imageUrl = await this.model.uploadImage(imageInput.files[0]);
     }
-  
-    const updatedAd = {
-      title: titleInput.value,
-      description: descriptionInput.value,
-      price: parseFloat(priceInput.value),
-      type: typeSelect.value,
-      image: imageUrl 
-    };
-  
-    try {
-      await this.model.updateAd(this.adId, updatedAd);
     
-      window.location.reload(); 
+    
+    const updatedAd = {
+        title: titleInput.value,
+        description: descriptionInput.value,
+        price: parseFloat(priceInput.value),
+        type: typeSelect.value,
+        image: imageUrl 
+    };
+    
+
+    try {
+        await this.model.updateAd(this.adId, updatedAd);
+        window.location.reload();
     } catch (error) {
-      this.view.showError('Error al guardar los cambios');
+        this.view.showError('Error al guardar los cambios');
     }
   }
   

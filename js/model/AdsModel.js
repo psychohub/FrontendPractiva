@@ -1,13 +1,13 @@
 
 function parseAds(data) {
   return data.map(ad => ({
-    id: ad.id,
-    image: ad.image,
-    title: ad.title,
-    description: ad.description,
-    price: ad.price,
-    type: ad.type,
-    tags: ad.tags.join(', ') 
+      id: ad.id,
+      image: ad.image,
+      title: ad.title,
+      description: ad.description,
+      price: ad.price,
+      type: ad.type,
+      tags: Array.isArray(ad.tags) ? ad.tags.join(', ') : ''  
   }));
 }
 
@@ -16,11 +16,13 @@ export default class AdsModel {
     const url = new URL('http://127.0.0.1:8000/api/ads');
     url.searchParams.append('_page', page);
     url.searchParams.append('_limit', limit);
-    
-    Object.entries(searchParams).forEach(([key, value]) => {
-      url.searchParams.append(key, value);
-    });
 
+    Object.entries(searchParams).forEach(([key, value]) => {
+      if (value) {
+        url.searchParams.append(key, value);
+      }
+    });
+    
     const response = await fetch(url.toString(), {
       method: 'GET'
     });

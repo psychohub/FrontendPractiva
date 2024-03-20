@@ -35,7 +35,17 @@ export default class AdsController {
   }
 
   async handleSearch(searchParams) {
-    this.currentPage = 1;
-    await this.loadAds(searchParams);
+    const { ads } = await this.model.getAds(1, 10000); 
+    const filteredAds = ads.filter(ad => {
+        const nameMatch = searchParams.name ? ad.title.toLowerCase().includes(searchParams.name.toLowerCase()) : true;
+        const descriptionMatch = searchParams.description ? ad.description.toLowerCase().includes(searchParams.description.toLowerCase()) : true;
+        const typeMatch = searchParams.type === '' || ad.type === searchParams.type;
+        return nameMatch && descriptionMatch && typeMatch;
+    });
+    this.view.renderAds(filteredAds);
+    
+    if (filteredAds.length === 0) {
+        this.view.showEmptyMessage();
+    }
   }
 }

@@ -26,6 +26,7 @@ export default class DetailView {
 
   showAd(ad) {
     let imageHtml = '';
+    this.currentAdImage = ad.image;
     if (ad.image && ad.image.startsWith('http')) {
       imageHtml = `<img src="${ad.image}" class="card-img-top" alt="${ad.title}">`;
     } else {
@@ -52,6 +53,7 @@ export default class DetailView {
 
   showEditForm(ad) {
     let imageHtml = '';
+    this.currentAdImage = ad.image;
     if (ad.image && ad.image.startsWith('http')) {
       imageHtml = `<img src="${ad.image}" class="card-img-top" alt="${ad.title}">`;
     } else {
