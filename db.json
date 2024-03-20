@@ -1,0 +1,164 @@
+{
+  "users": [
+    {
+      "username": "luke",
+      "password": "$2b$10$6bXdT0TIUGT0z.idcNRwEeeiRTp1CcxGCuNcn7bWynqKBRMzQlol6",
+      "id": 1
+    },
+    {
+      "username": "hgarciag",
+      "password": "$2b$10$6bXdT0TIUGT0z.idcNRwEeQgNdJ3ZgX580.V525rLDBGF1C7kE9Au",
+      "id": 2
+    },
+    {
+      "username": "nsolanos",
+      "password": "$2b$10$6bXdT0TIUGT0z.idcNRwEeQgNdJ3ZgX580.V525rLDBGF1C7kE9Au",
+      "id": 3
+    }
+  ],
+  "ads": [
+    {
+      "id": 1,
+      "title": "Anuncio 1",
+      "description": "Descripción del anuncio 1",
+      "price": 100,
+      "type": "venta",
+      "tags": [
+        "tag1",
+        "tag2"
+      ],
+      "image": "URL_de_la_imagen_1.jpg"
+    },
+    {
+      "id": 2,
+      "title": "Anuncio 2",
+      "description": "Descripción del anuncio 2",
+      "price": 200,
+      "type": "compra",
+      "tags": [
+        "tag3",
+        "tag4"
+      ],
+      "image": "URL_de_la_imagen_2.jpg"
+    },
+    {
+      "title": "adfadf",
+      "description": "adfadf",
+      "price": "3",
+      "type": "venta",
+      "tags": [
+        "adfadf"
+      ],
+      "image": "http://localhost:8000//file-1710881984461.jpeg",
+      "userId": 2,
+      "updatedAt": "2024-03-19T20:59:44.800Z",
+      "id": 4
+    },
+    {
+      "title": "Bicicleta",
+      "description": "Bicicleta electrica",
+      "price": "650",
+      "type": "venta",
+      "tags": [
+        "electrica",
+        "bicicleta"
+      ],
+      "image": "http://localhost:8000//file-1710882575586.jpeg",
+      "userId": 2,
+      "updatedAt": "2024-03-19T21:09:35.655Z",
+      "id": 5
+    },
+    {
+      "title": "zapato de correr",
+      "description": "zapatillas nuevas",
+      "price": "350",
+      "type": "venta",
+      "tags": [
+        "zapatos",
+        "tennis",
+        "sport"
+      ],
+      "image": "http://localhost:8000//file-1710960943246.jpeg",
+      "userId": 3,
+      "updatedAt": "2024-03-20T18:55:43.281Z",
+      "id": 6
+    },
+    {
+      "title": "Licuadora",
+      "description": "Licuadora de segunda mano",
+      "price": "150",
+      "type": "compra",
+      "tags": [
+        "cocina",
+        "batidos"
+      ],
+      "image": "http://localhost:8000//file-1710961396093.jpeg",
+      "userId": 3,
+      "updatedAt": "2024-03-20T19:03:16.112Z",
+      "id": 7
+    },
+    {
+      "title": "freidora de aire",
+      "description": "hermosa freidora de aire",
+      "price": "300",
+      "type": "venta",
+      "tags": [
+        "nueva",
+        "freidora",
+        "cocina"
+      ],
+      "image": "http://localhost:8000//file-1710964492787.jpeg",
+      "userId": 3,
+      "updatedAt": "2024-03-20T19:54:52.809Z",
+      "id": 8
+    },
+    {
+      "title": "Lavadora",
+      "description": "Se busca hermosa lavodora",
+      "price": "800",
+      "type": "compra",
+      "tags": [
+        "lavadora",
+        "hogar"
+      ],
+      "image": "http://localhost:8000//file-1710964553057.jpeg",
+      "userId": 3,
+      "updatedAt": "2024-03-20T19:55:53.079Z",
+      "id": 9
+    },
+    {
+      "title": "olla cocimiento lento",
+      "description": "se busca olla de cocimiento lento en buen estado",
+      "price": "950",
+      "type": "compra",
+      "tags": [
+        "olla",
+        "cocina"
+      ],
+      "image": "http://localhost:8000//file-1710964633117.jpeg",
+      "userId": 2,
+      "updatedAt": "2024-03-20T19:57:13.133Z",
+      "id": 10
+    },
+    {
+      "title": "Microondas",
+      "description": "Microondas en buen estado, dos años de uso",
+      "price": 750,
+      "type": "venta",
+      "image": "http://localhost:8000//file-1710964727049.jpeg",
+      "userId": 2,
+      "updatedAt": "2024-03-20T20:12:42.096Z",
+      "id": 11
+    },
+    {
+      "title": "audifonos",
+      "description": "exclusivo",
+      "price": 650,
+      "type": "venta",
+      "image": "http://localhost:8000//file-1710966753733.jpeg",
+      "userId": 2,
+      "updatedAt": "2024-03-20T20:32:56.963Z",
+      "id": 12
+    }
+  ]
+}
