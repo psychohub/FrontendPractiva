@@ -32,7 +32,7 @@ export default class CreateAdController {
           const type = formData.get('type');
           const tags = formData.get('tags').split(',').map(tag => tag.trim());
       
-          // Primero, sube la imagen si existe y añade la URL de la imagen a adData
+
           let imageUrl = null;
           if (formData.has('image')) {
             const file = formData.get('image');

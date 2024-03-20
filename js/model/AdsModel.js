@@ -1,14 +1,53 @@
+
+function parseAds(data) {
+  return data.map(ad => ({
+    id: ad.id,
+    image: ad.image,
+    title: ad.title,
+    description: ad.description,
+    price: ad.price,
+    type: ad.type,
+    tags: ad.tags.join(', ') 
+  }));
+}
+
 export default class AdsModel {
-    static async getAds() {
-      try {
-        const response = await fetch('http://127.0.0.1:8000/api/ads');
-        const data = await response.json();
-        return data;
-      } catch (error) {
-        console.error('Error al obtener los anuncios:', error);
-        throw error;
-      }
+  async getAds(page = 1, limit = 10, searchParams = {}) {
+    const url = new URL('http://127.0.0.1:8000/api/ads');
+    url.searchParams.append('_page', page);
+    url.searchParams.append('_limit', limit);
+    
+    Object.entries(searchParams).forEach(([key, value]) => {
+      url.searchParams.append(key, value);
+    });
+
+    const response = await fetch(url.toString(), {
+      method: 'GET'
+    });
+    
+    if (!response.ok) {
+      const errorData = await response.json();
+      throw new Error(errorData.message || 'Error al obtener los anuncios');
     }
-  
-    // Falta implementar crear, actualizar y eliminar anuncios
+    
+    const data = await response.json();
+    return {
+      ads: parseAds(data),
+      total: parseInt(response.headers.get('X-Total-Count')) 
+    };
   }
+  
+  async getAdDetails(adId) {
+    const response = await fetch(`http://127.0.0.1:8000/api/ads/${adId}`, {
+      method: 'GET'
+    });
+    
+    if (!response.ok) {
+      const errorData = await response.json();
+      throw new Error(errorData.message || 'Error al obtener los detalles del anuncio');
+    }
+    
+    const data = await response.json();
+    return data;
+  }
+}
