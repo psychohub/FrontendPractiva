@@ -10,17 +10,25 @@ export default class AdsView {
         ads.forEach(ad => {
             const adElement = document.createElement('div');
             adElement.classList.add('col-md-4', 'mb-4');
+
+            let imageHtml = '';
+            if (ad.image && ad.image.startsWith('http')) {
+              imageHtml = `<img src="${ad.image}" class="card-img-top" alt="${ad.title}">`;
+            } else {
+              imageHtml = `<div class="card-img-top bg-secondary text-white d-flex align-items-center justify-content-center" style="height: 200px;">Sin imagen</div>`;
+            }
+        
             adElement.innerHTML = `
-              <div class="card">
-                <img src="${ad.image}" class="card-img-top" alt="${ad.title}">
-                <div class="card-body">
-                  <h5 class="card-title">${ad.title}</h5>
-                  <p class="card-text">${ad.description}</p>
-                  <p class="card-text">Precio: ${ad.price}</p>
-                  <p class="card-text">Tipo: ${ad.type}</p>
-                  <a href="ad-details.html?id=${ad.id}" class="btn btn-primary">Ver detalles</a>
-                </div>
-              </div>
+            <div class="card">
+            ${imageHtml}
+            <div class="card-body">
+              <h5 class="card-title">${ad.title}</h5>
+              <p class="card-text">${ad.description}</p>
+              <p class="card-text">Precio: ${ad.price}</p>
+              <p class="card-text">Tipo: ${ad.type}</p>
+              <a href="detail.html?id=${ad.id}" class="btn btn-primary">Ver detalles</a>
+            </div>
+          </div>
             `;
             this.adsContainer.appendChild(adElement);
         });
