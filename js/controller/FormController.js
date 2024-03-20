@@ -21,5 +21,5 @@ export default class FormController {
     }
   }
 
-  // Implementa otras funciones para actualizar un anuncio
+
 }
