@@ -54,8 +54,28 @@ export default class AdsView {
     }
   
     renderPagination(currentPage, totalPages) {
-  
-    }
+      this.paginationContainer.innerHTML = '';
+
+      if (totalPages > 1) {
+          if (currentPage > 1) {
+              const prevBtn = document.createElement('button');
+              prevBtn.innerText = 'Anterior';
+              prevBtn.addEventListener('click', () => this.handlePagination(currentPage - 1));
+              this.paginationContainer.appendChild(prevBtn);
+          }
+
+          if (currentPage < totalPages) {
+              const nextBtn = document.createElement('button');
+              nextBtn.innerText = 'Siguiente';
+              nextBtn.addEventListener('click', () => this.handlePagination(currentPage + 1));
+              this.paginationContainer.appendChild(nextBtn);
+          }
+      }
+  }
+
+  bindPagination(handler) {
+      this.handlePagination = handler; 
+  }
   
     bindSearch(handler) {
       this.searchForm.addEventListener('submit', event => {

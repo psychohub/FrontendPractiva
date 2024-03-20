@@ -14,6 +14,7 @@ export default class AdsController {
 
   async initialize() {
     this.view.bindSearch(this.handleSearch.bind(this));
+    this.view.bindPagination(this.handleChangePage.bind(this));
     await this.loadAds();
   }
 
@@ -47,5 +48,15 @@ export default class AdsController {
     if (filteredAds.length === 0) {
         this.view.showEmptyMessage();
     }
+  }
+
+  async handleChangePage(newPage) {
+    this.currentPage = newPage;
+    await this.loadAds(); 
+  }
+
+  async handleSearch(searchParams) {
+    this.currentPage = 1; 
+    await this.loadAds(searchParams);
   }
 }
